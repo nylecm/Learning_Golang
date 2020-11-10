@@ -80,3 +80,7 @@ func binarySearch(xs []int64, x int64, l int, h int) int {
 func funnyMsg() string {
 	return "Funny"
 }
+
+func funnyMsg2() string {
+	return "funny 2"
+}
