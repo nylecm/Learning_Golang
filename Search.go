@@ -84,3 +84,7 @@ func funnyMsg() string {
 func funnyMsg2() string {
 	return "funny 2"
 }
+
+func funnyMsg3() string {
+	return "funny 3333"
+}
