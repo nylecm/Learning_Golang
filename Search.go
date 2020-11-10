@@ -5,26 +5,25 @@ import (
 	"math"
 )
 
-func main(){
-	xs := []int64{1,2,3,4,5}
+func main() {
+	xs := []int64{1, 2, 3, 4, 5}
 	pos := linearSearch(xs, 4)
 	fmt.Println(pos)
-	posBS := binarySearch(xs, 4)
+	posBS := binarySearch(xs, 4, 0, len(xs)-1)
 	fmt.Println(posBS)
-
 
 	isSorted := isSortedAsc(xs)
 	fmt.Println(isSorted)
 
-	xs2 := []int64{1,2,4,3,5}
+	xs2 := []int64{1, 2, 4, 3, 5}
 	isSorted2 := isSortedAsc(xs2)
 	fmt.Println(isSorted2)
 
-	xs3 := []int64{5,4,3,2,1}
+	xs3 := []int64{5, 4, 3, 2, 1}
 	isSorted3 := isSortedDec(xs3)
 	fmt.Println(isSorted3)
 
-	xs4 := []int64{5,3,4,2,1}
+	xs4 := []int64{5, 3, 4, 2, 1}
 	isSorted4 := isSortedDec(xs4)
 	fmt.Println(isSorted4)
 }
@@ -62,37 +61,22 @@ func isSortedDec(xs []int64) bool {
 	return true
 }
 
-func binarySearch(xs []int64, x int64) int {
-	h := len(xs) - 1
-	mid := (0+h) / 2
-
-	ans := -1
-
-	if xs[mid] == x {
-		ans = mid
-	} else if x < xs[mid]{
-		ans = binarySearch2(xs, x, 0, mid - 1)
-	} else {
-		ans = binarySearch2(xs, x, mid + 1, h)
-	}
-	return ans
-}
-
-func binarySearch2(xs []int64, x int64, l int, h int) int {
+func binarySearch(xs []int64, x int64, l int, h int) int {
 	if h < l {
 		return -1
 	}
 
-	mid := (l+h) / 2
+	mid := (l + h) / 2
 
 	if xs[mid] == x {
 		return mid
-	} else if x < xs[mid]{
-		binarySearch2(xs, x, l, mid - 1)
+	} else if x < xs[mid] {
+		return binarySearch(xs, x, l, mid-1)
 	} else {
-		binarySearch2(xs, x, mid + 1, h)
+		return binarySearch(xs, x, mid+1, h)
 	}
-	return -1
 }
 
-
+func funnyMsg() string {
+	return "Funny"
+}
