@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-type pair struct {
+type indexPair struct {
 	lowerIndex, upperIndex int
 }
 
@@ -34,17 +34,17 @@ func runProblem1(s1 string, s2 string) {
 	fmt.Println(indexes)
 }
 
-func problem1(s1 string, s2 string) (int, error, []pair) {
+func problem1(s1 string, s2 string) (int, error, []indexPair) {
 	if len(s1) >= len(s2) {
 		return -1, errors.New("s1 must be longer, or the same length as s2"), nil
 	}
 
 	s1Count, s1Cur := 0, 0
-	var indexes []pair
+	var indexes []indexPair
 
 	for i := 0; i < len(s2); i++ {
 		if s2[i] == s1[s1Cur] && s1Cur == len(s1)-1 {
-			indexes = append(indexes, pair{i - (len(s1) - 1), i})
+			indexes = append(indexes, indexPair{i - (len(s1) - 1), i})
 			s1Count++
 			s1Cur = 0
 		} else if s2[i] == s1[s1Cur] {
