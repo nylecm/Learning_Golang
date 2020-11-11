@@ -6,8 +6,7 @@ import (
 )
 
 type pizza struct {
-	numToppings float64
-	diameter    float64
+	numToppings, diameter float64
 }
 
 var bambini = pizza{6, 14}

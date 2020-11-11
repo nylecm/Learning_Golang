@@ -6,11 +6,15 @@ import (
 )
 
 func main() {
-	xs := []int64{1, 2, 3, 4, 5}
+	xs := []int64{1, 2, 3, 4, 5} // Ascending order:
 	pos := linearSearch(xs, 4)
 	fmt.Println(pos)
-	posBS := binarySearch(xs, 4, 0, len(xs)-1)
-	fmt.Println(posBS)
+
+	fmt.Println(binarySearch(xs, 1, 0, len(xs)-1))
+	fmt.Println(binarySearch(xs, 2, 0, len(xs)-1))
+	fmt.Println(binarySearch(xs, 3, 0, len(xs)-1))
+	fmt.Println(binarySearch(xs, 4, 0, len(xs)-1))
+	fmt.Println(binarySearch(xs, 5, 0, len(xs)-1))
 
 	isSorted := isSortedAsc(xs)
 	fmt.Println(isSorted)
@@ -22,6 +26,12 @@ func main() {
 	xs3 := []int64{5, 4, 3, 2, 1}
 	isSorted3 := isSortedDec(xs3)
 	fmt.Println(isSorted3)
+
+	fmt.Println(binarySearchDec(xs3, 1, 0, len(xs)-1))
+	fmt.Println(binarySearchDec(xs3, 2, 0, len(xs)-1))
+	fmt.Println(binarySearchDec(xs3, 3, 0, len(xs)-1))
+	fmt.Println(binarySearchDec(xs3, 4, 0, len(xs)-1))
+	fmt.Println(binarySearchDec(xs3, 5, 0, len(xs)-1))
 
 	xs4 := []int64{5, 3, 4, 2, 1}
 	isSorted4 := isSortedDec(xs4)
@@ -74,6 +84,22 @@ func binarySearch(xs []int64, x int64, l int, h int) int {
 		return binarySearch(xs, x, l, mid-1)
 	} else {
 		return binarySearch(xs, x, mid+1, h)
+	}
+}
+
+func binarySearchDec(xs []int64, x int64, l int, h int) int {
+	if h < l {
+		return -1
+	}
+
+	mid := (l + h) / 2
+
+	if xs[mid] == x {
+		return mid
+	} else if x > xs[mid] {
+		return binarySearchDec(xs, x, l, mid-1)
+	} else {
+		return binarySearchDec(xs, x, mid+1, h)
 	}
 }
 
